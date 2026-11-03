@@ -1,0 +1,10 @@
+@model CampaignDetailsModel
+@{ ViewData["Title"] = Model.Name; }
+<h1>@Model.Name</h1>
+<aside>Примерни данни за разработка. Датите и формулите не представляват официален график или правила за прием.</aside>
+<h2>Паралелки</h2>
+@foreach (var item in Model.Classes)
+{ <article><h3>@item.Name</h3><p>@item.Capacity места · @item.Formula</p></article> }
+<h2>Етапи</h2>
+@foreach (var stage in Model.Stages)
+{ <p>Етап @stage.Number: @stage.OpensUtc.ToString("dd.MM.yyyy HH:mm") – @stage.ClosesUtc.ToString("dd.MM.yyyy HH:mm") (UTC)</p> }

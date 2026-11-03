@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] · EduApply</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+<header><nav aria-label="Основна навигация">
+    <a asp-controller="Home" asp-action="Index" class="brand">EduApply</a>
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <a asp-controller="Applications" asp-action="Index">Заявления</a>
+        <a asp-controller="Preferences" asp-action="Index">Желания</a>
+        <a asp-controller="Ranking" asp-action="Index">Класиране</a>
+        <a asp-controller="Enrollment" asp-action="Index">Записване</a>
+        @if (User.IsInRole("Committee") || User.IsInRole("Administrator"))
+        { <a asp-controller="Documents" asp-action="Index">Комисия</a> }
+        @if (User.IsInRole("Administrator"))
+        { <a asp-controller="Administration" asp-action="Index">Администрация</a> }
+        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post"><button type="submit">Изход</button></form>
+    }
+    else
+    {
+        <a asp-area="Identity" asp-page="/Account/Login">Вход</a>
+        <a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+    }
+</nav></header>
+<main>@RenderBody()</main>
+<footer>Дипломен проект · Димитър Илиев · Етап 1</footer>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

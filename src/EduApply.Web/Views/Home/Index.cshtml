@@ -1,0 +1,14 @@
+@model HomeModel
+@{ ViewData["Title"] = "Онлайн прием в училище"; }
+<p class="eyebrow">Система за онлайн кандидатстване</p>
+<h1>Приемът започва с ясен избор.</h1>
+<p>EduApply е основа за подаване на заявления, подреждане на желания и класиране при прием в училище.</p>
+<aside>Етап 1: проектен скелет и база данни. Подаването на заявления, класирането и записването предстоят.</aside>
+<h2>Кампании</h2>
+@if (Model.Campaigns.Count == 0)
+{ <p>Няма добавени кампании. Изпълнете началното зареждане на данните според README.</p> }
+@foreach (var campaign in Model.Campaigns)
+{
+    <article><h3><a asp-controller="Campaigns" asp-action="Details" asp-route-id="@campaign.Id">@campaign.Name</a></h3>
+    <p>Учебна година @campaign.SchoolYear/@(campaign.SchoolYear + 1) · @(campaign.IsActive ? "Активна" : "Неактивна / демонстрационна")</p></article>
+}

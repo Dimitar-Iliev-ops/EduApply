@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../EduApply.Data/EduApply.Data.csproj" />
+    <ProjectReference Include="../EduApply.Models/EduApply.Models.csproj" />
+  </ItemGroup>
+</Project>
