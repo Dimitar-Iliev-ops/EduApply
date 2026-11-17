@@ -1,0 +1,12 @@
+### Примерна кампания
+GET http://127.0.0.1:5201/api/catalog/campaigns
+Accept: application/json
+
+### Състояние на каталога
+GET http://127.0.0.1:5201/api/catalog/health
+
+### Състояние на заявленията
+GET http://127.0.0.1:5202/api/applications/health
+
+### Състояние на класирането
+GET http://127.0.0.1:5203/api/ranking/health
